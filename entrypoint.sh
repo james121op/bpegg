@@ -3,11 +3,9 @@ cd /home/container
 
 # Attempt Server Update
 mkdir /home/container/tmp/
-echo "Downloading latest server release"
-wget --no-check-certificate https://brokeprotocol.com/wp-content/uploads/game.tar.gz -O /home/container/tmp/game.tar.gz
-echo "Download complete"
-echo "Extracting files and overwriting existing files"
-tar -zxvf /home/container/tmp/game.tar.gz -C /home/container/tmp/
+cd /home/container/tmp/
+echo "Downloading and extracting latest server release"
+curl -L https://brokeprotocol.com/wp-content/uploads/game.tar.gz | tar -xzv
 rsync -avh --exclude "settings.json" --exclude "Maps" --exclude "game.tar.gz" /home/container/tmp/ /home/container/
 echo "Update completed"
 echo "Cleaning up temporary files"
