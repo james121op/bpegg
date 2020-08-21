@@ -5,9 +5,10 @@ cd /home/container
 mkdir /home/container/tmp/
 cd /home/container/tmp/
 echo "Downloading and extracting latest server release"
-curl -L https://brokeprotocol.com/wp-content/uploads/game.tar.gz | tar -xzv
-rsync -avh --exclude "settings.json" --exclude "Maps" --exclude "game.tar.gz" /home/container/tmp/ /home/container/
+curl -L https://brokeprotocol.com/wp-content/uploads/game.tar.gz | tar -xz
+rsync -ah --exclude "settings.json" --exclude "Maps" --exclude "game.tar.gz" /home/container/tmp/ /home/container/
 echo "Update completed"
+cd /home/container/
 echo "Cleaning up temporary files"
 rm -rf /home/container/tmp/
 echo "Resuming boot sequence"
