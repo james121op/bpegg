@@ -1,0 +1,26 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v1"
+    },
+    "exported_at": "2020-08-17T21:30:22+00:00",
+    "name": "Broke Protocol",
+    "author": "sagnik@ambyre.net",
+    "description": "Pterodactyl egg for Broke Protocol",
+    "image": "sagniks\/brokeprotocol-pterodactyl",
+    "startup": ".\/bpgameserver.x86_64 -batchmode -nographics -logfile server.log",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"Found path:\",\r\n    \"userInteraction\": []\r\n}",
+        "logs": "{\r\n    \"custom\": true,\r\n    \"location\": \"server.log\"\r\n}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\napt-get update \\\r\n&& apt-get dist-upgrade -y \\\r\n&& apt-get autoremove -y \\\r\n&& apt-get autoclean \\\r\n&& apt -y --no-install-recommends install curl unzip lib32gcc1 ca-certificates\r\n\r\ncd \/tmp\r\ncurl -sSL -o bpds.tar.gz https:\/\/brokeprotocol.com\/wp-content\/uploads\/game.tar.gz\r\ntar -zxvf bpds.tar.gz -C \/mnt\/server\/\r\nsed -i 's\/\"path\": null,\/\"path\": \"users.db\",\/g' \/mnt\/server\/settings.json",
+            "container": "debian:10",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": []
+}
