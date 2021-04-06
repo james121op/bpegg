@@ -58,7 +58,6 @@ function FirstTimeSetup() {
     tar xvzf bp.tar.gz
     Done
 }
-StartUp
 function Done() {
     chmod +x *
     # Replace Startup Variables
@@ -68,3 +67,4 @@ function Done() {
     # Run the Server  
     eval ${MODIFIED_STARTUP}
 }
+StartUp
