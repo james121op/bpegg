@@ -56,6 +56,7 @@ function FirstTimeSetup() {
     curl https://brokeprotocol.com/version -o localversion
     curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -o bp.tar.gz
     tar xvzf bp.tar.gz
+    Done
 }
 StartUp
 function Done() {
