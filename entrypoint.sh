@@ -27,9 +27,9 @@ function Update() {
     cd ..
     curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -o bp.tar.gz
     # backup files
-    cp Maps tmp/filesafe
-    cp www tmp/filesafe
-    cp Plugins tmp/filesafe
+    cp -r Maps tmp/filesafe
+    cp -r www tmp/filesafe
+    cp -r Plugins tmp/filesafe
     cp server_info.txt tmp/filesafe
     cp announcements.txt tmp/filesafe
     cp groups.json tmp/filesafe
@@ -40,8 +40,8 @@ function Update() {
     tar xvzf bp.tar.gz
     rm -rf bp.tar.gz
     #put files back (not plugins they need to be updated)
-    cp tmp/filesafe/Maps .
-    cp tmp/filesafe/www .
+    cp -r tmp/filesafe/Maps .
+    cp -r tmp/filesafe/www .
     cp tmp/filesafe/server_info.txt .
     cp tmp/filesafe/announcements.txt .
     cp tmp/filesafe/groups.json .
