@@ -5,8 +5,8 @@ cd /home/container
 function StartUp() {
     echo "StartUp()"
     mkdir /home/container/tmp/
+    mkdir /home/container/tmp/filesafe/
     cd /home/container/tmp/
-    mkdir filesafe
     curl https://brokeprotocol.com/version -o serverversion
     serverversion=$(cat serverversion)
     if [ -f LocalVersion ]; then
@@ -24,30 +24,31 @@ function Update() {
     fi
     rm -rf localversion
     curl https://brokeprotocol.com/version -o localversion
+    cd ..
     curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -o bp.tar.gz
     # backup files
-    cp Maps filesafe
-    cp www filesafe
-    cp Plugins filesafe
-    cp server_info.txt filesafe
-    cp announcements.txt filesafe
-    cp groups.json filesafe
-    cp settings.json filesafe
-    cp skins.txt filesafe
-    cp whitelist.txt filesafe
-    cp npc_names.txt filesafe
+    cp Maps tmp/filesafe
+    cp www tmp/filesafe
+    cp Plugins tmp/filesafe
+    cp server_info.txt tmp/filesafe
+    cp announcements.txt tmp/filesafe
+    cp groups.json tmp/filesafe
+    cp settings.json tmp/filesafe
+    cp skins.txt tmp/filesafe
+    cp whitelist.txt tmp/filesafe
+    cp npc_names.txt tmp/filesafe
     tar xvzf bp.tar.gz
     rm -rf bp.tar.gz
     #put files back (not plugins they need to be updated)
-    cp filesafe/Maps .
-    cp filesafe/www .
-    cp filesafe/server_info.txt .
-    cp filesafe/announcements.txt .
-    cp filesafe/groups.json .
-    cp filesafe/settings.json .
-    cp filesafe/skins.txt .
-    cp filesafe/whitelist.txt .
-    cp filesafe/npc_names.txt .
+    cp tmp/filesafe/Maps .
+    cp tmp/filesafe/www .
+    cp tmp/filesafe/server_info.txt .
+    cp tmp/filesafe/announcements.txt .
+    cp tmp/filesafe/groups.json .
+    cp tmp/filesafe/settings.json .
+    cp tmp/filesafe/skins.txt .
+    cp tmp/filesafe/whitelist.txt .
+    cp tmp/filesafe/npc_names.txt .
     echo "done"
     echo "you might need to update settings.json"
     sleep 5
@@ -55,12 +56,16 @@ function Update() {
 }
 function FirstTimeSetup() {
     echo "FirstTimeSetup()"
+    cd /home/container/tmp/
     curl https://brokeprotocol.com/version -o localversion
+    cd ..
     curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -o bp.tar.gz
     tar xvzf bp.tar.gz
+    rm -rf bp.tar.gz
     Done
 }
 function Done() {
+    cd /home/container
     chmod +x *
     # Replace Startup Variables
     MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
