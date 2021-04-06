@@ -5,11 +5,9 @@
     },
     "exported_at": "2020-08-17T21:30:22+00:00",
     "name": "Broke Protocol",
-    // edited by james121op (me@james121op.me)
-    "author": "sagnik@ambyre.net",
+    "author": "me@james121op.me",
     "description": "Pterodactyl egg for Broke Protocol",
     "image": "james121op\/bpegg",
-//    "image": "sagniks\/brokeprotocol-pterodactyl",
     "startup": ".\/bpgameserver.x86_64 -batchmode -nographics -logfile server.log",
     "config": {
         "files": "{}",
