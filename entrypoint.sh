@@ -22,6 +22,8 @@ function Update() {
         echo "your already updated!"
         Done
     fi
+    rm -rf localversion
+    curl https://brokeprotocol.com/version -o localversion
     curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -o bp.tar.gz
     # backup files
     cp Maps filesafe
