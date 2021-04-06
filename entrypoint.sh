@@ -9,7 +9,7 @@ function StartUp() {
     cd /home/container/tmp/
     curl https://brokeprotocol.com/version -o serverversion
     serverversion=$(cat serverversion)
-    if [ -f LocalVersion ]; then
+    if [ -f localversion ]; then
         Update
     else
         FirstTimeSetup
