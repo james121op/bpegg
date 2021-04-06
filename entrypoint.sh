@@ -65,6 +65,7 @@ function FirstTimeSetup() {
     Done
 }
 function Done() {
+    echo "Done()"
     cd /home/container
     chmod +x *
     # Replace Startup Variables
