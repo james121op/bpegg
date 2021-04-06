@@ -1,6 +1,7 @@
 FROM debian:buster
-#
-MAINTAINER Sagnik Sasmal, <sagnik@sagnik.me>
+
+#MAINTAINER Sagnik Sasmal, <sagnik@sagnik.me>
+MAINTAINER James121op, <me@james121op.me>
 
 # Ignore APT warnings about not having a TTY
 ENV DEBIAN_FRONTEND noninteractive
