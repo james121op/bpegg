@@ -1,11 +1,9 @@
 #!/bin/bash
-cd /home/container
 
 #Server Update
 function StartUp() {
     echo "StartUp()"
-    mkdir /home/container/tmp/
-    mkdir /home/container/tmp/filesafe/
+    mkdir -p /home/container/tmp/filesafe/
     cd /home/container/tmp/
     curl https://brokeprotocol.com/version -o serverversion
     serverversion=$(cat serverversion)
