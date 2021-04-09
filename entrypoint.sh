@@ -16,7 +16,7 @@ function Update() {
     clear
     echo "Update()"
     echo "Info: This Could Take Some Time"
-    curl https://brokeprotocol.com/version -so serverversion
+    curl https://brokeprotocol.com/version -sSLo serverversion
     serverversion=$(cat serverversion)
     localversion=$(cat localversion)
     if [ $localversion == $serverversion ]; then
@@ -26,9 +26,9 @@ function Update() {
         Done
     fi
     rm -rf localversion
-    curl https://brokeprotocol.com/version -so localversion
+    curl https://brokeprotocol.com/version -sSLo localversion
     cd /home/container/
-    curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -so bp.tar.gz
+    curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -sSLo bp.tar.gz
     # backup files
     cp -r Maps tmp/filesafe
     cp -r www tmp/filesafe
@@ -61,16 +61,17 @@ function FirstTimeSetup() {
     echo "Info: This Could Take Some Time"
     mkdir -p /home/container/tmp/filesafe/
     cd /home/container/tmp/
-    curl https://brokeprotocol.com/version -so serverversion
-    curl https://brokeprotocol.com/version -so localversion
+    curl https://brokeprotocol.com/version -sSLo serverversion
+    curl https://brokeprotocol.com/version -sSLo localversion
     cd /home/container/
-    curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -so bp.tar.gz
+    curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -sSLo bp.tar.gz
     tar xzf bp.tar.gz
     rm -rf bp.tar.gz
     Done
     exit 0
 }
 function Done() {
+    clear
     echo "Done()"
     cd /home/container
     chmod +x *
