@@ -79,7 +79,7 @@ function Done() {
     echo "${MODIFIED_STARTUP}"
     timeout 1
     clear
-    nohup eval ${MODIFIED_STARTUP}
+    nohup ${MODIFIED_STARTUP}
     read
 }
 StartUp
