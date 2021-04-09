@@ -77,8 +77,6 @@ function Done() {
     # Replace Startup Variables
     MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
     echo "${MODIFIED_STARTUP}"
-    timeout 1
-    clear
     touch  /home/container/server.log
     ln -sf /proc/1/fd/1 /home/container/server.log
     eval ${MODIFIED_STARTUP}
