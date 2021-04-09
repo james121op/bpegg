@@ -16,7 +16,9 @@ function Update() {
     serverversion=$(cat serverversion)
     localversion=$(cat localversion)
     if [ $localversion == $serverversion ]; then
-        echo "your already updated!"
+        echo "Server Version=$serverversion"
+        echo "Local Version=$localversion"
+        echo "No New Version"
         Done
     fi
     rm -rf localversion
