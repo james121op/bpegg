@@ -73,6 +73,7 @@ function FirstTimeSetup() {
 function Done() {
     echo "Done()"
     cd /home/container
+    docker logs -f server.log
     chmod +x *
     # Replace Startup Variables
     MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
