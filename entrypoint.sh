@@ -79,8 +79,7 @@ function Done() {
     echo "${MODIFIED_STARTUP}"
     timeout 1
     clear
-    nohup eval ${MODIFIED_STARTUP} > bp.process 2>&1 &
-    echo $! > bp.process
+    nohup eval ${MODIFIED_STARTUP}
 }
 StartUp
 exit 0
