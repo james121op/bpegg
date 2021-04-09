@@ -3,10 +3,7 @@
 #Server Update
 function StartUp() {
     echo "StartUp()"
-    mkdir -p /home/container/tmp/filesafe/
     cd /home/container/tmp/
-    curl https://brokeprotocol.com/version -o serverversion
-    serverversion=$(cat serverversion)
     if [ -f localversion ]; then
         Update
     else
@@ -15,6 +12,8 @@ function StartUp() {
 }
 function Update() {
     echo "Update()"
+    curl https://brokeprotocol.com/version -o serverversion
+    serverversion=$(cat serverversion)
     localversion=$(cat localversion)
     if [ $localversion == $serverversion ]; then
         echo "your already updated!"
@@ -22,7 +21,7 @@ function Update() {
     fi
     rm -rf localversion
     curl https://brokeprotocol.com/version -o localversion
-    cd ..
+    cd /home/container/
     curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -o bp.tar.gz
     # backup files
     cp -r Maps tmp/filesafe
@@ -47,16 +46,15 @@ function Update() {
     cp tmp/filesafe/skins.txt .
     cp tmp/filesafe/whitelist.txt .
     cp tmp/filesafe/npc_names.txt .
-    echo "done"
-    echo "you might need to update settings.json"
-    sleep 5
     Done
 }
 function FirstTimeSetup() {
     echo "FirstTimeSetup()"
+    mkdir -p /home/container/tmp/filesafe/
     cd /home/container/tmp/
+    curl https://brokeprotocol.com/version -o serverversion
     curl https://brokeprotocol.com/version -o localversion
-    cd ..
+    cd /home/container/
     curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -o bp.tar.gz
     tar xvzf bp.tar.gz
     rm -rf bp.tar.gz
