@@ -63,7 +63,7 @@ function FirstTimeSetup() {
     curl https://brokeprotocol.com/version -so localversion
     cd /home/container/
     curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -so bp.tar.gz
-    tar xvf bp.tar.gz
+    tar xzf bp.tar.gz
     rm -rf bp.tar.gz
     Done
     exit 0
