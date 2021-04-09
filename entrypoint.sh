@@ -79,8 +79,7 @@ function Done() {
     echo "${MODIFIED_STARTUP}"
     timeout 1
     clear
-    nohup ${MODIFIED_STARTUP}
-    read
+    nohup ${MODIFIED_STARTUP} > bpprocess
 }
 StartUp
 exit 0
