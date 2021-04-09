@@ -80,7 +80,7 @@ function Done() {
     timeout 1
     clear
     nohup eval ${MODIFIED_STARTUP} > bp.process 2>&1 &
-    echo $! > save_pid.txt 
+    echo $! > bp.process
 }
 StartUp
 exit 0
