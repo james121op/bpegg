@@ -9,6 +9,7 @@ function StartUp() {
     else
         FirstTimeSetup
     fi
+    exit 0
 }
 function Update() {
     echo "Update()"
@@ -49,6 +50,7 @@ function Update() {
     cp tmp/filesafe/whitelist.txt .
     cp tmp/filesafe/npc_names.txt .
     Done
+    exit 0
 }
 function FirstTimeSetup() {
     echo "FirstTimeSetup()"
@@ -61,6 +63,7 @@ function FirstTimeSetup() {
     tar xvzf bp.tar.gz
     rm -rf bp.tar.gz
     Done
+    exit 0
 }
 function Done() {
     echo "Done()"
@@ -74,3 +77,4 @@ function Done() {
     eval ${MODIFIED_STARTUP}
 }
 StartUp
+exit 0
