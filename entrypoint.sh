@@ -4,7 +4,7 @@
 function StartUp() {
     clear
     echo "StartUp()"
-    cd /home/container/tmp/
+    cd /home/container/tmp
     if [ -f localversion ]; then
         Update
     else
@@ -15,6 +15,7 @@ function StartUp() {
 function Update() {
     clear
     echo "Update()"
+    echo "Info: This Could Take Some Time"
     curl https://brokeprotocol.com/version -so serverversion
     serverversion=$(cat serverversion)
     localversion=$(cat localversion)
@@ -57,6 +58,7 @@ function Update() {
 function FirstTimeSetup() {
     clear
     echo "FirstTimeSetup()"
+    echo "Info: This Could Take Some Time"
     mkdir -p /home/container/tmp/filesafe/
     cd /home/container/tmp/
     curl https://brokeprotocol.com/version -so serverversion
@@ -69,15 +71,14 @@ function FirstTimeSetup() {
     exit 0
 }
 function Done() {
-    clear
     echo "Done()"
     cd /home/container
     chmod +x *
     # Replace Startup Variables
     MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
     echo "${MODIFIED_STARTUP}"
-
-    # Run the Server  
+    touch  /home/container/server.log
+    ln -sf /proc/1/fd/1 /home/container/server.log
     eval ${MODIFIED_STARTUP}
 }
 StartUp
