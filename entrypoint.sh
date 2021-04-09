@@ -79,7 +79,9 @@ function Done() {
     echo "${MODIFIED_STARTUP}"
     timeout 1
     clear
-    nohup ${MODIFIED_STARTUP} > bpprocess
+    touch  /home/container/server.log
+    ln -sf /proc/1/fd/1 /home/container/server.log
+    eval ${MODIFIED_STARTUP}
 }
 StartUp
 exit 0
