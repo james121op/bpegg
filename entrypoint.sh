@@ -80,6 +80,7 @@ function Done() {
     timeout 1
     clear
     nohup eval ${MODIFIED_STARTUP}
+    read
 }
 StartUp
 exit 0
