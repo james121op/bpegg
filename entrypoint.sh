@@ -2,6 +2,7 @@
 
 #Server Update
 function StartUp() {
+    clear
     echo "StartUp()"
     cd /home/container/tmp/
     if [ -f localversion ]; then
@@ -12,6 +13,7 @@ function StartUp() {
     exit 0
 }
 function Update() {
+    clear
     echo "Update()"
     curl https://brokeprotocol.com/version -so serverversion
     serverversion=$(cat serverversion)
@@ -37,7 +39,7 @@ function Update() {
     cp skins.txt tmp/filesafe
     cp whitelist.txt tmp/filesafe
     cp npc_names.txt tmp/filesafe
-    tar xvzf bp.tar.gz
+    tar xzf bp.tar.gz
     rm -rf bp.tar.gz
     #put files back (not plugins they need to be updated)
     cp -r tmp/filesafe/Maps .
@@ -53,6 +55,7 @@ function Update() {
     exit 0
 }
 function FirstTimeSetup() {
+    clear
     echo "FirstTimeSetup()"
     mkdir -p /home/container/tmp/filesafe/
     cd /home/container/tmp/
@@ -60,12 +63,13 @@ function FirstTimeSetup() {
     curl https://brokeprotocol.com/version -so localversion
     cd /home/container/
     curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -so bp.tar.gz
-    tar xvzf bp.tar.gz
+    tar xvf bp.tar.gz
     rm -rf bp.tar.gz
     Done
     exit 0
 }
 function Done() {
+    clear
     echo "Done()"
     cd /home/container
     chmod +x *
