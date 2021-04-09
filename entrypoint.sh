@@ -9,7 +9,7 @@ function StartUp() {
         Update
     else
         FirstTimeSetup
-    else
+    fi
     exit 0
 }
 function Update() {
