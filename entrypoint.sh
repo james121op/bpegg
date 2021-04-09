@@ -79,9 +79,8 @@ function Done() {
     echo "${MODIFIED_STARTUP}"
     timeout 1
     clear
-    docker logs -f server.log
-    # Run the Server  
-    eval ${MODIFIED_STARTUP}
+    nohup eval ${MODIFIED_STARTUP} > bp.process 2>&1 &
+    echo $! > save_pid.txt 
 }
 StartUp
 exit 0
