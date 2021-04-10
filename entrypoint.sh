@@ -68,6 +68,8 @@ function FirstTimeSetup() {
     tar xzf bp.tar.gz
     rm -rf bp.tar.gz
     rm -rf settings.json
+    rm -rf groups.json
+    curl https://raw.githubusercontent.com/james121op/bpegg/master/groups.json -sSLo groups.json
     # jq doesn't support jsonc
     echo '{"serverName":"Unconfigured Server","map":"Default","players":32,"hostName":"","port":5557,"maxTransferRate":1000000,"whitelist":false,"dayLength":1440,"difficulty":0.5,"startItems":[{"itemName":"Money","chance":1,"minCount":1000,"maxCount":1000},{"itemName":"SmartPhone1","chance":1,"minCount":1,"maxCount":1}],"cef":false,"announcements":{"enabled":true,"interval":120},"http":{"port":8080,"https":false,"internalHost":"*"},"database":{"path":null,"connectionString":null}}' > settings.json
     echo "$( jq ".port = "${SERVER_PORT}"" settings.json )" > settings.json
