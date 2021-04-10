@@ -1,0 +1,119 @@
+/* Groups
+  This is the groups file. Here you can create, modify, and remove groups. A group is a collection of members and permissions.
+  List members by their username (eg. "NongBenz"). You can also add a wildcard ("*") to the group's Members list to automatically make everyone part of that group.
+  Per group you can have permissions. This is an string list, based on permission nodes. Per permission you have a GroupNamespace and then the permission. Take for example the following:
+  "bpe.helloworld"
+  Here "bpe" is the GroupNamespace and "helloworld" the permission. These can then be checked using .HasPermission("bpe.helloworld").
+  You can also use a wildcard here like so;
+  "bpe.*"
+  Which will allow every permission in said GroupNamespace, but you can also wildcard everything like so, which will allow every permission.
+  "*".
+  CustomData can be set per group and can be used by resources. This implements the CustomData class and ICustomData interface. This uses a Dictionary low level, so technically any custom entry is possible.
+  A member may be part of multiple groups. When that's the case, it will loop over all groups the player is part of and check each group for permission. If the one of the groups has permission, it will pass and break.
+  "Inherits" is used to inherit permissions from other groups into the selected group. For example; I have a group called "Owners" and one called "Admins" and I want "Owners" to have the same permissions as "Admins",
+   but I don't want to copy the permissions; this is what inheriting solves.
+  To inherit a group, add the group you want to inherit **by name** into the string array. For example, adding Admins to Owners would be:
+  Name: "Owners",
+  "Inherits": [
+    "Admins"
+  ]
+  And now, Owner has exactly the same permissions as admins, and the permissions owner adds to that.
+  Note that you can have nested inherits, for example Owners -> Admins, Admins -> Mods, Mods -> Default. Now owner has the permissions from Owners, Admins, Mods, and Default.
+  
+  Type is a property used to define what the contents of the Members list is. For example if you want a group that only checks against a specific Job you'd set the type to "JobName".
+
+  The following types are allowed (Defined in "BrokeProtocol.API.GroupTypes"
+  AccountID
+    - The registered username.
+      - Selector: "player.username"
+      - Example: "NongBenz"
+  ConnectionIP
+    - The user IPv4 address.
+      - Selector: "player.svPlayer.connection.IP"
+      - Example: "127.0.0.1"
+  JobName
+    - The user Job Name: "Citizen", "Prisoner", "Hitman", "Police", "Paramedic", "Firefighter", "Rojo Loco", "Green St. Fam", "Borgata Blu", "Mayor", "Delivery Man", "Taxi Driver", "SpecOps"
+      - Selector: "player.svPlayer.job.info.shared.jobName"
+      - Example: "Prisoner"
+  JobGroup
+    - The user Job Group/Type: "Citizen" (Most Jobs), "Criminal" (Gang Member), "LawEnforcement" (SpecOps, Police), "Prisoner"
+      - Selector: "player.svPlayer.job.info.shared.groupIndex"
+      - Example: "LawEnforcement"
+*/
+
+[
+  {
+    "Type": "AccountID",
+    "Name": "Owners",
+    "Tag": "&e[Owner]",
+    "Permissions": [
+      "*" // This gives all Permissions
+    ],
+    "CustomData": {
+      "Data": {
+
+      }
+    },
+    "Members": [
+      "OWNER NAME GOES HERE",
+      "OTHER OWNER NAME GOES HERE AND SO ON"
+    ],
+    "Inherits": ["Admins"]
+  },
+  {
+    "Type": "AccountID",
+    "Name": "Admins",
+    "Tag": "&4[Admin]",
+    "Permissions": [
+      /*
+        -------------------------
+        Default Permissions
+        -------------------------
+      */
+      "bp.save",
+      "bp.playerRecords",
+      "bp.banRecords",
+      "bp.kick",
+      "bp.ban",
+      "bp.banAccount",
+      "bp.unbanIP",
+      "bp.restrain",
+      "bp.teleport",
+      "bp.summon",
+      "bp.removeJob",
+      "bp.heal",
+      "bp.clearCrimes",
+      "bp.environment",
+      "bp.transfer"
+    ],
+    "CustomData": {
+      "Data": {
+
+      }
+    },
+    "Members": [
+      "ADMIN NAMES GOES HERE",
+      "OTHER ADMIN NAME GOES HERE AND SO ON"
+    ],
+    "Inherits": ["Default"]
+  },
+  {
+    "Name": "Member",
+    "Permissions": [
+      /*
+        -------------------------
+        Default Permissions
+        -------------------------
+      */
+      "bp.pingAll",
+      "bp.voteStart",
+      "game.*"
+    ],
+    "CustomData": {
+      "Data": {
+
+      }
+    },
+    "Users": ["*"] // This * causes everyone to be in this Group.
+  }
+]
