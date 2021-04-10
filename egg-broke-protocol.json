@@ -18,7 +18,7 @@
         "files": "{}",
         "startup": "{\r\n    \"done\": \"Found path:\",\r\n    \"userInteraction\": []\r\n}",
         "logs": "{\r\n    \"custom\": true,\r\n    \"location\": \"server.log\"\r\n}",
-        "stop": "^C"
+        "stop": "^CC"
     },
     "scripts": {
         "installation": {
