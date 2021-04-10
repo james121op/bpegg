@@ -22,7 +22,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\napt-get update \\\r\n&& apt-get dist-upgrade -y \\\r\n&& apt-get autoremove -y \\\r\n&& apt-get autoclean \\\r\n&& apt -y --no-install-recommends install curl unzip lib32gcc1 ca-certificates",
+            "script": "#!\/bin\/bash\r\napt-get update \\\r\n&& apt-get dist-upgrade -y \\\r\n&& apt-get autoremove -y \\\r\n&& apt-get autoclean \\\r\n&& apt -y --no-install-recommends install curl unzip lib32gcc1 ca-certificates jq",
             "container": "debian:10",
             "entrypoint": "bash"
         }
