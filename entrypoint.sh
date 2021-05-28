@@ -21,7 +21,6 @@ function Update() {
     if [ $localversion == $serverversion ]; then
         Done
     fi
-    rm -rf localversion
     curl https://brokeprotocol.com/version -sSLo localversion
     cd /home/container/
     curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -sSLo bp.tar.gz
@@ -30,7 +29,7 @@ function Update() {
     tar xzf bp.tar.gz
     rm -rf bp.tar.gz
     #put files back (not plugins they need to be updated)
-    cp -r tmp/filesafe/{Maps,www,server_info.txt,announcements.txt,groups.json,settings.json,settings.json,skins.txt,whitelist.txt,npc_names.txt} .
+    cp -r tmp/filesafe/{Maps,www,server_info.txt,announcements.txt,groups.json,settings.json,skins.txt,whitelist.txt,npc_names.txt} .
     Done
     exit 0
 }
