@@ -1,7 +1,6 @@
 FROM debian:buster
 
-#MAINTAINER Sagnik Sasmal, <sagnik@sagnik.me>
-MAINTAINER James121op, <me@james121op.me>
+LABEL James121op, <me@james121op.me>
 
 # Ignore APT warnings about not having a TTY
 ENV DEBIAN_FRONTEND noninteractive
@@ -19,8 +18,6 @@ RUN apt-get update \
 
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
-
-# Install bp deps
 
 USER container
 ENV USER=container HOME=/home/container
