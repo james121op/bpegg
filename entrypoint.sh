@@ -25,11 +25,11 @@ function Update() {
     cd /home/container/
     curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -sSLo bp.tar.gz
     # backup files
-    cp -r {Maps,www,Plugins,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,skins.txt,whitelist.txt,npc_names.txt} tmp/filesafe
+    cp -r {Maps,www,Plugins,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,GameSource Jobs.json,skins.txt,whitelist.txt,npc_names.txt} tmp/filesafe
     tar xzf bp.tar.gz
     rm -rf bp.tar.gz
     #put files back (not plugins they need to be updated)
-    cp -r tmp/filesafe/{Maps,www,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,skins.txt,whitelist.txt,npc_names.txt} .
+    cp -r tmp/filesafe/{Maps,www,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,GameSource Jobs.json,skins.txt,whitelist.txt,npc_names.txt} .
     Done
     exit 0
 }
