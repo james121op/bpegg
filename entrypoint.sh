@@ -16,6 +16,8 @@ function Update() {
     clear
     echo "Update()"
     echo "Info: This Could Take Some Time"
+    #not currently being used (SoonTM)
+    BuildId=$(curl -sSL https://api.steamcmd.net/v1/info/696370 | jq -r '.data."696370".depots.branches.public.buildid')
     serverversion=$(curl -sSL https://brokeprotocol.com/version)
     localversion=$(cat localversion)
     if [ $localversion == $serverversion ]; then
