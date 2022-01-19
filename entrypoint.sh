@@ -20,7 +20,7 @@ function Update() {
     #BuildId=$(curl -sSL https://api.steamcmd.net/v1/info/696370 | jq -r '.data."696370".depots.branches.public.buildid')
     serverversion=$(curl -sSL https://brokeprotocol.com/version)
     localversion=$(cat localversion)
-    if [ $localversion == $serverversion ]; then
+    if [ "$localversion" == "$serverversion" ]; then
         Done
     fi
     curl https://brokeprotocol.com/version -sSLo localversion
