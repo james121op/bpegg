@@ -4,7 +4,7 @@
         "version": "PTDL_v1",
         "update_url": null
     },
-    "exported_at": "2021-08-04T19:09:09-04:00",
+    "exported_at": "2022-02-11T09:11:11-05:00",
     "name": "Broke Protocol",
     "author": "me@james121op.me",
     "description": "Pterodactyl egg for Broke Protocol",
@@ -16,14 +16,14 @@
     "startup": ".\/bpgameserver.x86_64 -batchmode -nographics -logfile server.log",
     "config": {
         "files": "{}",
-        "startup": "{\r\n    \"done\": \"Found path:\"\r\n}",
+        "startup": "{\r\n    \"done\": \"Successful master connection\"\r\n}",
         "logs": "{}",
         "stop": "^CC"
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\napt-get update \\\r\n&& apt-get dist-upgrade -y \\\r\n&& apt-get autoremove -y \\\r\n&& apt-get autoclean \\\r\n&& apt -y --no-install-recommends install curl ca-certificates jq",
-            "container": "debian:10",
+            "script": null,
+            "container": "debian:11",
             "entrypoint": "bash"
         }
     },
