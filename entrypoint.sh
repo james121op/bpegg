@@ -26,7 +26,8 @@ function Update() {
     # backup files
     cp -r {Maps,www,Plugins,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,GameSource\ Jobs.json,skins.txt,whitelist.txt,npc_names.txt} tmp/filesafe
     tar xzf bp.tar.gz
-    rm -rf bp.tar.gz
+    #remove useless files
+    rm -rf {bp.tar.gz,start.sh,stop.sh,steam_appid.txt}
     cp -r tmp/filesafe/{Maps,www,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,GameSource\ Jobs.json,skins.txt,whitelist.txt,npc_names.txt} .
     Done
     exit 0
@@ -36,7 +37,8 @@ function FirstTimeSetup() {
     curl https://brokeprotocol.com/version -sSLo tmp/localversion
     curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -sSLo bp.tar.gz
     tar xzf bp.tar.gz
-    rm -rf bp.tar.gz
+    #remove useless files
+    rm -rf {bp.tar.gz,start.sh,stop.sh,steam_appid.txt}
     #strip json comments
     echo "$(sed '\|//.*|d' settings.json)" >settings.json
     #change port
