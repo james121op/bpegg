@@ -40,7 +40,7 @@ function FirstTimeSetup() {
     #remove useless files
     rm -rf {bp.tar.gz,start.sh,stop.sh,steam_appid.txt}
     #strip json comments
-    echo "$(sed '\|//.*|d' settings.json)" >settings.json
+    sed -i '\,^[ \t]*//,d' settings.json
     #change port
     echo "$(jq ".port = "${SERVER_PORT}"" settings.json)" >settings.json
     Done
