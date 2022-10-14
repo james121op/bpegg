@@ -35,7 +35,7 @@ function Update() {
 function FirstTimeSetup() {
     mkdir -p tmp/filesafe
     curl https://brokeprotocol.com/version -sSLo tmp/localversion
-    curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -sSLo bp.tar.gz
+    curl https://pterodactyl.james121op.me/bp.tar.gz -sSLo bp.tar.gz #temp fix as download link for bp linux server is now a gdrive link
     tar xzf bp.tar.gz
     #remove useless files
     rm -rf {bp.tar.gz,start.sh,stop.sh,steam_appid.txt}
