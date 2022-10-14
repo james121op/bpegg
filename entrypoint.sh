@@ -22,7 +22,7 @@ function Update() {
     fi
     echo "Update found."
     curl https://brokeprotocol.com/version -sSLo tmp/localversion
-    curl https://brokeprotocol.com/wp-content/uploads/game.tar.gz -sSLo bp.tar.gz
+    curl https://pterodactyl.james121op.me/bp.tar.gz -sSLo bp.tar.gz #temp fix as download link for bp linux server is now a gdrive link
     # backup files
     cp -r {Maps,www,Plugins,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,GameSource\ Jobs.json,skins.txt,whitelist.txt,npc_names.txt} tmp/filesafe
     tar xzf bp.tar.gz
