@@ -1,19 +1,19 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
     "meta": {
-        "version": "PTDL_v1",
+        "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2022-02-11T09:11:11-05:00",
+    "exported_at": "2022-10-14T23:47:42+01:00",
     "name": "Broke Protocol",
     "author": "me@james121op.me",
     "description": "Pterodactyl egg for Broke Protocol",
     "features": null,
-    "images": [
-        "quay.io\/james121op\/bpegg:master"
-    ],
+    "docker_images": {
+        "quay.io\/james121op\/bpegg:master": "quay.io\/james121op\/bpegg:master"
+    },
     "file_denylist": [],
-    "startup": ".\/bpgameserver.x86_64 -batchmode -nographics -logfile server.log",
+    "startup": ".\/bpgameserver.x86_64 -batchmode -nographics -logfile server.log -ignorePlugins \"{{IGNORED_PLUGINS}}\"",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"Successful master connection\"\r\n}",
@@ -27,5 +27,16 @@
             "entrypoint": "bash"
         }
     },
-    "variables": []
+    "variables": [
+        {
+            "name": "Ignore Plugins",
+            "description": "Ignore Plugins",
+            "env_variable": "IGNORED_PLUGINS",
+            "default_value": "!WarSource#:Other:Plugins:Here",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string",
+            "field_type": "text"
+        }
+    ]
 }
