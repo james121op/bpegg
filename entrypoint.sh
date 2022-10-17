@@ -22,20 +22,20 @@ function Update() {
     fi
     echo "Update found."
     curl https://brokeprotocol.com/version -sSLo tmp/localversion
-    curl https://pterodactyl.james121op.me/bp.tar.gz -sSLo bp.tar.gz #temp fix as download link for bp linux server is now a gdrive link
+    gdown '1iS2gE_stqMcd8eqqtwXjOmWXUc-IkFLy' -q -O bp.tar.gz
     # backup files
-    cp -r {Maps,www,Plugins,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,GameSource\ Jobs.json,skins.txt,whitelist.txt,npc_names.txt} tmp/filesafe
+    cp -r {Maps,Plugins,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,Classes.json,LifeSource\ Jobs.json,WarSource\ Jobs.json,skins.txt,whitelist.txt,npc_names.txt} tmp/filesafe
     tar xzf bp.tar.gz
     #remove useless files
     rm -rf {bp.tar.gz,start.sh,stop.sh,steam_appid.txt}
-    cp -r tmp/filesafe/{Maps,www,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,GameSource\ Jobs.json,skins.txt,whitelist.txt,npc_names.txt} .
+    cp -r tmp/filesafe/{Maps,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,Classes.json,LifeSource\ Jobs.json,WarSource\ Jobs.json,skins.txt,whitelist.txt,npc_names.txt} .
     Done
     exit 0
 }
 function FirstTimeSetup() {
     mkdir -p tmp/filesafe
     curl https://brokeprotocol.com/version -sSLo tmp/localversion
-    curl https://pterodactyl.james121op.me/bp.tar.gz -sSLo bp.tar.gz #temp fix as download link for bp linux server is now a gdrive link
+    gdown '1iS2gE_stqMcd8eqqtwXjOmWXUc-IkFLy' -q -O bp.tar.gz
     tar xzf bp.tar.gz
     #remove useless files
     rm -rf {bp.tar.gz,start.sh,stop.sh,steam_appid.txt}
