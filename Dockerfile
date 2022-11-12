@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:stable-slim
 
 LABEL James121op, <me@james121op.me>
 
