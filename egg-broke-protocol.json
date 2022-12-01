@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2022-10-14T23:47:42+01:00",
+    "exported_at": "2022-12-01T19:59:28+00:00",
     "name": "Broke Protocol",
     "author": "me@james121op.me",
     "description": "Pterodactyl egg for Broke Protocol",
@@ -13,7 +13,7 @@
         "quay.io\/james121op\/bpegg:master": "quay.io\/james121op\/bpegg:master"
     },
     "file_denylist": [],
-    "startup": ".\/bpgameserver.x86_64 -batchmode -nographics -logfile server.log -ignorePlugins \"{{IGNORED_PLUGINS}}\"",
+    "startup": ".\/bpgameserver.x86_64 -batchmode -nographics -ignorePlugins \"{{IGNORED_PLUGINS}}\" &",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"Successful master connection\"\r\n}",
