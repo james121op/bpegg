@@ -49,8 +49,6 @@ function FirstTimeSetup() {
 function Done() {
     # Replace Startup Variables
     MODIFIED_STARTUP=$(eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g'))
-    #pipes log file to /dev/stdout (unfortunately this locks the log file)
-    ln -sf /dev/stdout server.log
     #start bp server
     eval ${MODIFIED_STARTUP}
 }
