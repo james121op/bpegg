@@ -27,7 +27,7 @@ function Update() {
     cp -r {Maps,Plugins,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,Classes.json,LifeSource\ Jobs.json,WarSource\ Jobs.json,skins.txt,whitelist.txt,npc_names.txt} tmp/filesafe
     tar xzf bp.tar.gz
     #remove useless files
-    rm -rf {bp.tar.gz,start.sh,stop.sh,steam_appid.txt}
+    rm -rf {bp.tar.gz,start.sh,stop.sh,steam_appid.txt,.cache}
     cp -r tmp/filesafe/{Maps,server_info.txt,announcements.txt,groups.json,settings.json,videos.json,Classes.json,LifeSource\ Jobs.json,WarSource\ Jobs.json,skins.txt,whitelist.txt,npc_names.txt} .
     Done
     exit 0
@@ -38,7 +38,7 @@ function FirstTimeSetup() {
     gdown '1iS2gE_stqMcd8eqqtwXjOmWXUc-IkFLy' -q -O bp.tar.gz
     tar xzf bp.tar.gz
     #remove useless files
-    rm -rf {bp.tar.gz,start.sh,stop.sh,steam_appid.txt}
+    rm -rf {bp.tar.gz,start.sh,stop.sh,steam_appid.txt,.cache}
     #strip json comments
     sed -i '\,^[ \t]*//,d' settings.json
     #change port
