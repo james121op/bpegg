@@ -11,7 +11,7 @@ RUN apt-get update \
     && apt-get -y install curl ca-certificates tar jq pip \
     && apt-get autoremove -y \
     && apt-get autoclean \
-    && pip install --no-cache-dir gdown  \
+    && pip install --no-cache-dir --break-system-packages gdown  \
     #misc
     && useradd -d /home/container -m container \
     && rm -rf /var/lib/apt/lists/*
