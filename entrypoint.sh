@@ -19,6 +19,7 @@ function Update() {
     if [ "$localversion" == "$serverversion" ]; then
         echo "No update found."
         Done
+        exit 0
     fi
     echo "Update found."
     curl https://brokeprotocol.com/version -sSLo tmp/localversion
