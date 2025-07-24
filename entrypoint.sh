@@ -12,8 +12,6 @@ function StartUp() {
 }
 function Update() {
     echo "Checking for updates."
-    #not currently being used (SoonTM)
-    #BuildId=$(curl -sSL https://api.steamcmd.net/v1/info/696370 | jq -r '.data."696370".depots.branches.public.buildid')
     serverversion=$(curl -sSL https://brokeprotocol.com/version)
     localversion=$(cat tmp/localversion)
     if [ "$localversion" == "$serverversion" ]; then
@@ -40,10 +38,8 @@ function FirstTimeSetup() {
     tar xzf bp.tar.gz
     #remove useless files
     rm -rf {bp.tar.gz,start.sh,stop.sh,steam_appid.txt,.cache}
-    #strip json comments
-    sed -i '\,^[ \t]*//,d' settings.json
-    #change port
-    echo "$(jq ".port = "${SERVER_PORT}"" settings.json)" >settings.json
+    #find and replace server port
+    sed -i '/^[[:space:]]*\/\// !s/\("port"[[:space:]]*:[[:space:]]*\)[0-9]\+/\1'"${SERVER_PORT}"'/' settings.json
     Done
     exit 0
 }

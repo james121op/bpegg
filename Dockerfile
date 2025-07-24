@@ -1,20 +1,17 @@
 FROM debian:stable-slim
 
-LABEL James121op, <me@james121op.me>
+LABEL maintainer="James121op <me@james121op.me>"
 
-# Ignore APT warnings about not having a TTY
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-    #install dependencies
-    && apt-get dist-upgrade -y \
-    && apt-get -y install curl ca-certificates tar jq pip \
+    && apt-get upgrade -y --no-install-recommends \
+    && apt-get install -y --no-install-recommends curl ca-certificates python3-pip tar \
     && apt-get autoremove -y \
-    && apt-get autoclean \
-    && pip install --no-cache-dir --break-system-packages gdown  \
-    #misc
-    && useradd -d /home/container -m container \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip3 install --no-cache-dir gdown \
+    && useradd -d /home/container -m container
 
 USER container
 ENV USER=container HOME=/home/container
